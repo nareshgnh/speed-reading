@@ -1,0 +1,2903 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Week 1: Speed Reading Foundations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-light: #f7fafc; /* Very light gray, almost white */
+        --bg-dark: #1a202c; /* Dark gray */
+        --card-bg-light: #ffffff;
+        --card-bg-dark: #2d3748; /* Slightly lighter dark gray for cards */
+        --text-light-primary: #2d3748; /* Dark gray for text on light bg */
+        --text-light-secondary: #4a5568; /* Medium gray for text on light bg */
+        --text-dark-primary: #e2e8f0; /* Light gray for text on dark bg */
+        --text-dark-secondary: #a0aec0; /* Medium-light gray for text on dark bg */
+        --accent-color: #5a67d8; /* Indigo */
+        --accent-color-darker: #4c51bf;
+        --border-light: #e2e8f0;
+        --border-dark: #4a5568;
+        --quote-bg-light: #ebf4ff;
+        --quote-bg-dark: #2c3e50;
+        --quote-border-light: var(--accent-color);
+        --quote-border-dark: #63b3ed; /* Light blue for dark mode quote border */
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-light-primary);
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      body.dark-mode {
+        background-color: var(--bg-dark);
+        color: var(--text-dark-primary);
+      }
+
+      .content-card {
+        background-color: var(--card-bg-light);
+        border-radius: 0.75rem; /* 12px */
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem 2rem; /* 24px, 32px */
+        margin-bottom: 2rem;
+        border: 1px solid var(--border-light);
+        transition: background-color 0.3s, border-color 0.3s;
+      }
+      body.dark-mode .content-card {
+        background-color: var(--card-bg-dark);
+        border-color: var(--border-dark);
+      }
+
+      .nav-button-container {
+        background-color: var(--card-bg-light);
+        border-radius: 0.75rem;
+        padding: 0.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--border-light);
+      }
+      body.dark-mode .nav-button-container {
+        background-color: var(--card-bg-dark);
+        border-color: var(--border-dark);
+      }
+
+      .nav-button {
+        background-color: transparent;
+        color: var(--text-light-secondary);
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.5rem; /* 8px */
+        font-weight: 600;
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+      body.dark-mode .nav-button {
+        color: var(--text-dark-secondary);
+      }
+      .nav-button:hover {
+        color: var(--accent-color);
+        background-color: var(--quote-bg-light);
+      }
+      body.dark-mode .nav-button:hover {
+        color: var(--quote-border-dark);
+        background-color: var(--bg-dark);
+      }
+      .nav-button.active {
+        background-color: var(--accent-color);
+        color: white;
+        box-shadow: 0 4px 14px 0 rgba(90, 103, 216, 0.38);
+      }
+      body.dark-mode .nav-button.active {
+        background-color: var(--quote-border-dark);
+        color: var(--bg-dark);
+        box-shadow: 0 4px 14px 0 rgba(99, 179, 237, 0.38);
+      }
+
+      .section-title {
+        font-size: 1.75rem; /* 28px */
+        font-weight: 700;
+        color: var(--text-light-primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--accent-color);
+      }
+      body.dark-mode .section-title {
+        color: var(--text-dark-primary);
+        border-bottom-color: var(--quote-border-dark);
+      }
+
+      .sub-section-title {
+        font-size: 1.375rem; /* 22px */
+        font-weight: 600;
+        color: var(--text-light-primary);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      body.dark-mode .sub-section-title {
+        color: var(--text-dark-primary);
+      }
+
+      .tutor-quote {
+        background-color: var(--quote-bg-light);
+        border-left: 5px solid var(--quote-border-light);
+        padding: 1.25rem 1.5rem;
+        margin: 1.5rem 0;
+        border-radius: 0.5rem;
+        font-style: italic;
+        color: var(--text-light-secondary);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      body.dark-mode .tutor-quote {
+        background-color: var(--quote-bg-dark);
+        border-left-color: var(--quote-border-dark);
+        color: var(--text-dark-secondary);
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-bottom: 1rem;
+      }
+      ul li {
+        margin-bottom: 0.625rem;
+        position: relative;
+        padding-left: 1.75rem;
+      }
+      ul li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+      }
+      body.dark-mode ul li::before {
+        color: var(--quote-border-dark);
+      }
+
+      ol.list-decimal {
+        list-style-type: decimal;
+        padding-left: 1.75rem;
+      }
+
+      .vocab-list li::before {
+        content: none;
+      } /* Remove bullets for vocab lists */
+      .vocab-list li {
+        padding-left: 0;
+      }
+
+      details summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--accent-color);
+        padding: 0.5rem 0;
+        transition: color 0.3s;
+      }
+      body.dark-mode details summary {
+        color: var(--quote-border-dark);
+      }
+      details summary:hover {
+        color: var(--accent-color-darker);
+      }
+      body.dark-mode details summary:hover {
+        color: #90cdf4;
+      } /* Lighter blue for dark hover */
+
+      .reading-text {
+        background-color: #f9fafb;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border: 1px solid var(--border-light);
+        max-height: 350px;
+        overflow-y: auto;
+        line-height: 1.8;
+        color: #374151; /* Specific text color for reading passage for contrast */
+      }
+      body.dark-mode .reading-text {
+        background-color: #2d3748; /* Slightly lighter than card for contrast */
+        border-color: var(--border-dark);
+        color: var(--text-dark-secondary);
+      }
+      .reading-text .word-count {
+        float: right;
+        font-size: 0.8em;
+        color: #718096;
+        margin-left: 8px;
+        font-style: italic;
+      }
+      body.dark-mode .reading-text .word-count {
+        color: #a0aec0;
+      }
+      .reading-text p {
+        margin-bottom: 0.5em;
+      } /* Space between paragraphs in reading text */
+
+      .input-field,
+      textarea.input-field {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-light);
+        border-radius: 0.5rem; /* 8px */
+        margin-top: 0.5rem;
+        background-color: var(--card-bg-light);
+        color: var(--text-light-primary);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      body.dark-mode .input-field,
+      body.dark-mode textarea.input-field {
+        background-color: var(
+          --bg-dark
+        ); /* Darker than card for input fields */
+        color: var(--text-dark-primary);
+        border-color: var(--border-dark);
+      }
+      .input-field:focus,
+      textarea.input-field:focus {
+        outline: none;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.3);
+      }
+      body.dark-mode .input-field:focus,
+      body.dark-mode textarea.input-field:focus {
+        border-color: var(--quote-border-dark);
+        box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.3);
+      }
+      textarea.input-field {
+        min-height: 120px;
+      }
+
+      .theme-toggle-button {
+        background-color: var(--card-bg-light);
+        color: var(--text-light-secondary);
+        border: 1px solid var(--border-light);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      body.dark-mode .theme-toggle-button {
+        background-color: var(--card-bg-dark);
+        color: var(--text-dark-secondary);
+        border-color: var(--border-dark);
+      }
+      .theme-toggle-button:hover {
+        background-color: var(--accent-color);
+        color: white;
+      }
+      body.dark-mode .theme-toggle-button:hover {
+        background-color: var(--quote-border-dark);
+        color: var(--bg-dark);
+      }
+
+      /* Flashcard Styles */
+      .flashcard-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1.5rem;
+      }
+      .flashcard {
+        width: 100%;
+        max-width: 500px;
+        height: 250px;
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1.5rem;
+        cursor: pointer;
+        perspective: 1000px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.6s, background-color 0.3s;
+        transform-style: preserve-3d;
+      }
+      body.dark-mode .flashcard {
+        background-color: var(--quote-border-dark);
+        color: var(--bg-dark);
+      }
+      .flashcard.is-flipped {
+        transform: rotateY(180deg);
+      }
+      .flashcard-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        overflow-y: auto;
+      }
+      .flashcard-front {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .flashcard-back {
+        transform: rotateY(180deg);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+
+      .flashcard-controls {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.75rem;
+      }
+      .flashcard-controls button {
+        background-color: var(--card-bg-light);
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      body.dark-mode .flashcard-controls button {
+        background-color: var(--card-bg-dark);
+        color: var(--quote-border-dark);
+        border-color: var(--quote-border-dark);
+      }
+      .flashcard-controls button:hover {
+        background-color: var(--accent-color);
+        color: white;
+      }
+      body.dark-mode .flashcard-controls button:hover {
+        background-color: var(--quote-border-dark);
+        color: var(--bg-dark);
+      }
+      .question-block {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border: 1px solid var(--border-light);
+        border-radius: 0.5rem;
+      }
+      body.dark-mode .question-block {
+        border-color: var(--border-dark);
+      }
+
+      .answer-reveal {
+        background-color: #e6fffa;
+        color: #2c7a7b;
+        padding: 0.75rem;
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+        border: 1px solid #a0f0ed;
+      }
+      body.dark-mode .answer-reveal {
+        background-color: #2c5282;
+        color: #bee3f8;
+        border-color: #4a5568;
+      }
+    </style>
+  </head>
+  <body class="p-4 md:p-8">
+    <header class="mb-8 text-center relative">
+      <h1 class="text-4xl md:text-5xl font-bold">
+        Speed Reading Genius: Week 1
+      </h1>
+      <p class="text-lg text-gray-600 mt-2">
+        Your Journey to Reading Faster and Learning Smarter!
+      </p>
+      <button
+        id="theme-toggle"
+        class="theme-toggle-button absolute top-0 right-0 mt-2 mr-2 md:mt-0 md:mr-0"
+      >
+        <i class="fas fa-moon"></i>
+      </button>
+    </header>
+
+    <nav
+      class="nav-button-container flex flex-wrap justify-center gap-2 mb-10 p-2"
+    >
+      <button class="nav-button active" onclick="showPage('day1')">
+        Day 1
+      </button>
+      <button class="nav-button" onclick="showPage('day2')">Day 2</button>
+      <button class="nav-button" onclick="showPage('day3')">Day 3</button>
+      <button class="nav-button" onclick="showPage('day4')">Day 4</button>
+      <button class="nav-button" onclick="showPage('day5')">Day 5</button>
+      <button class="nav-button" onclick="showPage('day6')">Day 6</button>
+      <button class="nav-button" onclick="showPage('day7')">Day 7</button>
+    </nav>
+
+    <main id="content-area">
+      <div id="day1" class="page-content">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 1: Introduction & Your Starting Point
+          </h2>
+          <div class="tutor-quote">
+            <p>
+              "In today's knowledge-based economy, there's no better skill than
+              reading and learning faster to be successful. I want to welcome
+              you to my learning family... This week is a warm-up to prepare you
+              to be more successful."
+            </p>
+          </div>
+
+          <h3 class="sub-section-title">Why Speed Reading?</h3>
+          <p>
+            The tutor emphasizes that information overload is a significant
+            challenge today. Learning to read and learn faster can provide
+            benefits in:
+          </p>
+          <ul>
+            <li>The workplace (managing mail, emails, trainings).</li>
+            <li>Academic success and certifications.</li>
+            <li>Personal development and maintaining mental fitness.</li>
+          </ul>
+
+          <h3 class="sub-section-title">Proof It Works</h3>
+          <p>
+            A double-blind efficacy study using the Nelson Denny standardized
+            test showed that participants doubled or quadrupled their reading
+            speed with no loss of comprehension.
+          </p>
+
+          <h3 class="sub-section-title">Today's Tasks (from Video & PDF)</h3>
+          <p>
+            Your main task for today is to watch the introductory videos for
+            Week 1. Once you've done that, you're set for Day 1!
+          </p>
+
+          <h3 class="sub-section-title">
+            Activity: Measure Your Initial Reading Speed
+          </h3>
+          <p>
+            It's important to measure your initial reading speed so you can
+            track your progress. Follow these steps (from PDF Part 1, pp. 3-7 &
+            Video):
+          </p>
+          <ol class="list-decimal ml-6 mb-4">
+            <li>Get a timer (your phone will work).</li>
+            <li>
+              Read the text below for exactly <strong>one minute</strong> at
+              your normal, comfortable reading rate.
+            </li>
+            <li>
+              Note the number at the end of the last full line you read. This is
+              your approximate word count.
+            </li>
+            <li>This number is your initial Words Per Minute (WPM).</li>
+          </ol>
+
+          <p class="font-semibold mb-2">
+            Reading Text (from "The Wizard of Oz"):
+          </p>
+          <div class="reading-text mb-4">
+            <p>
+              Dorothy lived in the midst of the great Kansas prairies, with
+              Uncle Henry, who was a farmer, and Aunt Em, who was the farmer's
+              wife. <span class="word-count">(26)</span>
+            </p>
+            <p>
+              Their house was small, for the lumber to build it had to be
+              carried by wagon many miles. There were four walls, a floor and a
+              roof, which made one <span class="word-count">(55)</span>
+            </p>
+            <p>
+              room; and this room contained a rusty looking cookstove, a
+              cupboard for the dishes, a table, three or four chairs, and the
+              beds. Uncle Henry <span class="word-count">(80)</span>
+            </p>
+            <p>
+              and Aunt Em had a big bed in one corner, and Dorothy a little bed
+              in another corner. There was no garret at all, and no
+              cellar--except a <span class="word-count">(109)</span>
+            </p>
+            <p>
+              small hole dug in the ground, called a cyclone cellar, where the
+              family could go in case one of those great whirlwinds arose,
+              mighty enough to <span class="word-count">(135)</span>
+            </p>
+            <p>
+              crush any building in its path. It was reached by a trap door in
+              the middle of the floor, from which a ladder led down into the
+              small, dark hole. <span class="word-count">(165)</span>
+            </p>
+            <p>
+              When Dorothy stood in the doorway and looked around, she could see
+              nothing but the great gray prairie on every side. Not a tree nor a
+              <span class="word-count">(191)</span>
+            </p>
+            <p>
+              house broke the broad sweep of flat country that reached to the
+              edge of the sky in all directions. The sun had baked the plowed
+              land into a <span class="word-count">(219)</span>
+            </p>
+            <p>
+              gray mass, with little cracks running through it. Even the grass
+              was not green, for the sun had burned the tops of the long blades
+              until <span class="word-count">(245)</span>
+            </p>
+            <p>
+              they were the same gray color to be seen everywhere. Once the
+              house had been painted, but the sun blistered the paint and the
+              rains washed <span class="word-count">(271)</span>
+            </p>
+            <p>
+              it away, and now the house was as dull and gray as everything
+              else. <span class="word-count">(285)</span>
+            </p>
+            <p>
+              When Aunt Em came there to live she was a young, pretty wife. The
+              sun and wind had changed her, too. They had taken the sparkle from
+              her <span class="word-count">(313)</span>
+            </p>
+            <p>
+              eyes and left them a sober gray; they had taken the red from her
+              cheeks and lips, and they were gray also. She was thin and gaunt,
+              and never <span class="word-count">(342)</span>
+            </p>
+            <p>
+              smiled now. When Dorothy, who was an orphan, first came to her,
+              Aunt Em had been so startled by the child's laughter that she
+              would scream <span class="word-count">(368)</span>
+            </p>
+            <p>
+              and press her hand upon her heart whenever Dorothy's merry voice
+              reached her ears; and she still looked at the little girl with
+              wonder <span class="word-count">(392)</span>
+            </p>
+            <p>
+              that she could find anything to laugh at.
+              <span class="word-count">(400)</span>
+            </p>
+            <p>
+              Uncle Henry never laughed. He worked hard from morning till night
+              and did not know what joy was. He was gray also, from his long
+              beard to <span class="word-count">(427)</span>
+            </p>
+            <p>
+              his rough boots, and he looked stern and solemn, and rarely spoke.
+              <span class="word-count">(439)</span>
+            </p>
+            <p>
+              It was Toto that made Dorothy laugh, and saved her from growing as
+              gray as her other surroundings. Toto was not gray; he was a little
+              black <span class="word-count">(466)</span>
+            </p>
+            <p>
+              dog, with long silky hair and small black eyes that twinkled
+              merrily on either side of his funny, wee nose. Toto played all day
+              long, and <span class="word-count">(492)</span>
+            </p>
+            <p>
+              Dorothy played with him, and loved him dearly.
+              <span class="word-count">(500)</span>
+            </p>
+          </div>
+
+          <label for="initialWPM" class="block font-medium text-gray-700"
+            >Enter Your Initial WPM:</label
+          >
+          <input
+            type="number"
+            id="initialWPM"
+            name="initialWPM"
+            class="input-field"
+            placeholder="e.g., 250"
+          />
+          <p class="text-sm text-gray-500 mt-1">
+            Make a note of this in your workbook (Activity Book, page 6 or PDF
+            page 8).
+          </p>
+
+          <h3 class="sub-section-title">Materials Check (from Video)</h3>
+          <p>Ensure you have the following ready for the program:</p>
+          <ul class="list-disc ml-6">
+            <li>
+              <input type="checkbox" class="mr-2" />Activity Guide/Workbook
+            </li>
+            <li>
+              <input type="checkbox" class="mr-2" />A non-fiction book you've
+              read before and found easy to understand.
+            </li>
+            <li><input type="checkbox" class="mr-2" />A timer.</li>
+            <li><input type="checkbox" class="mr-2" />A pen.</li>
+          </ul>
+
+          <h3 class="sub-section-title">Program Sneak Peek</h3>
+          <div class="tutor-quote">
+            <p>
+              "First, you're going to learn how your mind decodes text... Then
+              I'll show you the mechanics for reading faster... Then I'll show
+              you how to combine the psychology and the mechanics... Then you'll
+              learn how to differentiate between different types of reading...
+              I'll show you some emotional intelligence skills... I'll even show
+              you effective study strategies... I'll show you how to remember
+              and recall what you learn."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="day2" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 2: Setting Your Goals - The Why Behind the How
+          </h2>
+          <div class="tutor-quote">
+            <p>
+              "It's easier to get where you're going when you have a map and
+              know where you're going. In today's lesson, I'm going to give you
+              a map or an outline of this program..."
+            </p>
+          </div>
+          <h3 class="sub-section-title">
+            Goal Setting Introduction (from PDF Week 1, Day 2)
+          </h3>
+          <p>
+            Today focuses on setting a clear vision for what you want to achieve
+            with speed reading. This uses the principle of Newton's 3rd Law:
+            "For every action, there is an equal and opposite reaction."
+          </p>
+          <ul>
+            <li>
+              <strong>Action (Cause):</strong> Your goals and vision for speed
+              reading.
+            </li>
+            <li>
+              <strong>Reaction (Effect):</strong> The outcomes you expect and,
+              importantly, how achieving these goals will make you feel.
+            </li>
+          </ul>
+          <p>
+            The PDF emphasizes: "This exercise may seem simple, but please do
+            not skip it. By doing this exercise, your goals become very clear,
+            and by that, you will attain the belief that will help you complete
+            the course on time."
+          </p>
+
+          <h3 class="sub-section-title">
+            Activity: Cause & Effect Goal Setting
+          </h3>
+          <p>
+            Complete the following based on the exercise in your workbook (PDF
+            Week 1, Day 2, page 5 / PDF page 7). Reflect deeply on your
+            motivations and desired feelings.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label for="goalCause1" class="block font-medium"
+                >CAUSE 1 (Your Goal/Vision):</label
+              >
+              <textarea
+                id="goalCause1"
+                class="input-field"
+                placeholder="e.g., Read one technical journal per week."
+              ></textarea>
+              <label for="goalEffect1" class="block font-medium mt-2"
+                >EFFECT 1 (Expected Outcome & Feelings):</label
+              >
+              <textarea
+                id="goalEffect1"
+                class="input-field"
+                placeholder="e.g., Stay updated in my field, feel confident and knowledgeable."
+              ></textarea>
+            </div>
+            <div>
+              <label for="goalCause2" class="block font-medium"
+                >CAUSE 2 (Your Goal/Vision):</label
+              >
+              <textarea
+                id="goalCause2"
+                class="input-field"
+                placeholder="e.g., Finish my assigned readings for class efficiently."
+              ></textarea>
+              <label for="goalEffect2" class="block font-medium mt-2"
+                >EFFECT 2 (Expected Outcome & Feelings):</label
+              >
+              <textarea
+                id="goalEffect2"
+                class="input-field"
+                placeholder="e.g., Have more free time, feel less stressed and more prepared."
+              ></textarea>
+            </div>
+            <div>
+              <label for="goalCause3" class="block font-medium"
+                >CAUSE 3 (Your Goal/Vision):</label
+              >
+              <textarea
+                id="goalCause3"
+                class="input-field"
+                placeholder="e.g., Read for pleasure more often."
+              ></textarea>
+              <label for="goalEffect3" class="block font-medium mt-2"
+                >EFFECT 3 (Expected Outcome & Feelings):</label
+              >
+              <textarea
+                id="goalEffect3"
+                class="input-field"
+                placeholder="e.g., Explore new worlds and ideas, feel relaxed and inspired."
+              ></textarea>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-gray-500 body.dark-mode:text-gray-400">
+            Remember to focus on the emotions tied to achieving these goals.
+            This clarity and belief are crucial for sustained motivation.
+          </p>
+          <div class="tutor-quote mt-6">
+            <p>
+              "I think learning should be fun, don't you? Make sure you take
+              notes because you're going to want to remember what you learned
+              today."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="day3" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 3: Instant Word Recognition (Dolch Words)
+          </h2>
+          <h3 class="sub-section-title">Concept: Sight Words</h3>
+          <p>
+            "When you see something so often, your brain puts it into your
+            subconscious so that you don't need to process it again the next
+            time you see it. This is similar to a habit."
+          </p>
+          <p>
+            Today, you'll focus on the Dolch Sight Words. These are
+            high-frequency words that make up a large percentage of common
+            texts.
+          </p>
+          <ul>
+            <li>Developed by Dr. Edward William Dolch in the 1930s-40s.</li>
+            <li>Contains 220 "service words" and 95 high-frequency nouns.</li>
+            <li>
+              Comprise about 80% of words in children's books and 50% in adult
+              writing.
+            </li>
+          </ul>
+          <p>
+            <strong>Goal:</strong> Familiarize yourself with these words for
+            instant recognition to boost processing speed.
+          </p>
+
+          <h3 class="sub-section-title">Activity: Master the Dolch Words</h3>
+          <details class="mb-4">
+            <summary class="text-lg">View 220 Dolch Service Words</summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list"
+            >
+              <ul class="columns-2 md:columns-3 lg:columns-4 text-sm">
+                <li>the</li>
+                <li>to</li>
+                <li>and</li>
+                <li>he</li>
+                <li>a</li>
+                <li>I</li>
+                <li>you</li>
+                <li>it</li>
+                <li>of</li>
+                <li>in</li>
+                <li>was</li>
+                <li>said</li>
+                <li>his</li>
+                <li>that</li>
+                <li>she</li>
+                <li>for</li>
+                <li>on</li>
+                <li>they</li>
+                <li>but</li>
+                <li>had</li>
+                <li>at</li>
+                <li>him</li>
+                <li>with</li>
+                <li>up</li>
+                <li>all</li>
+                <li>look</li>
+                <li>is</li>
+                <li>her</li>
+                <li>there</li>
+                <li>some</li>
+                <li>out</li>
+                <li>as</li>
+                <li>be</li>
+                <li>have</li>
+                <li>go</li>
+                <li>we</li>
+                <li>am</li>
+                <li>then</li>
+                <li>little</li>
+                <li>down</li>
+                <li>do</li>
+                <li>can</li>
+                <li>could</li>
+                <li>when</li>
+                <li>did</li>
+                <li>what</li>
+                <li>so</li>
+                <li>see</li>
+                <li>not</li>
+                <li>were</li>
+                <li>get</li>
+                <li>them</li>
+                <li>like</li>
+                <li>one</li>
+                <li>this</li>
+                <li>my</li>
+                <li>would</li>
+                <li>me</li>
+                <li>will</li>
+                <li>yes</li>
+                <li>big</li>
+                <li>went</li>
+                <li>are</li>
+                <li>come</li>
+                <li>if</li>
+                <li>now</li>
+                <li>long</li>
+                <li>no</li>
+                <li>came</li>
+                <li>ask</li>
+                <li>very</li>
+                <li>an</li>
+                <li>over</li>
+                <li>your</li>
+                <li>its</li>
+                <li>ride</li>
+                <li>into</li>
+                <li>just</li>
+                <li>blue</li>
+                <li>red</li>
+                <li>from</li>
+                <li>good</li>
+                <li>any</li>
+                <li>about</li>
+                <li>around</li>
+                <li>want</li>
+                <li>don't</li>
+                <li>how</li>
+                <li>know</li>
+                <li>right</li>
+                <li>put</li>
+                <li>too</li>
+                <li>got</li>
+                <li>take</li>
+                <li>where</li>
+                <li>every</li>
+                <li>pretty</li>
+                <li>jump</li>
+                <li>green</li>
+                <li>four</li>
+                <li>away</li>
+                <li>old</li>
+                <li>by</li>
+                <li>their</li>
+                <li>here</li>
+                <li>saw</li>
+                <li>call</li>
+                <li>after</li>
+                <li>well</li>
+                <li>think</li>
+                <li>ran</li>
+                <li>let</li>
+                <li>help</li>
+                <li>make</li>
+                <li>going</li>
+                <li>sleep</li>
+                <li>brown</li>
+                <li>yellow</li>
+                <li>five</li>
+                <li>six</li>
+                <li>walk</li>
+                <li>two</li>
+                <li>or</li>
+                <li>before</li>
+                <li>eat</li>
+                <li>again</li>
+                <li>play</li>
+                <li>who</li>
+                <li>been</li>
+                <li>may</li>
+                <li>stop</li>
+                <li>off</li>
+                <li>never</li>
+                <li>seven</li>
+                <li>eight</li>
+                <li>cold</li>
+                <li>today</li>
+                <li>fly</li>
+                <li>myself</li>
+                <li>round</li>
+                <li>tell</li>
+                <li>much</li>
+                <li>keep</li>
+                <li>give</li>
+                <li>work</li>
+                <li>first</li>
+                <li>try</li>
+                <li>new</li>
+                <li>must</li>
+                <li>start</li>
+                <li>black</li>
+                <li>white</li>
+                <li>ten</li>
+                <li>does</li>
+                <li>bring</li>
+                <li>goes</li>
+                <li>write</li>
+                <li>always</li>
+                <li>drink</li>
+                <li>once</li>
+                <li>soon</li>
+                <li>made</li>
+                <li>run</li>
+                <li>gave</li>
+                <li>open</li>
+                <li>has</li>
+                <li>find</li>
+                <li>only</li>
+                <li>us</li>
+                <li>three</li>
+                <li>our</li>
+                <li>better</li>
+                <li>hold</li>
+                <li>buy</li>
+                <li>funny</li>
+                <li>warm</li>
+                <li>ate</li>
+                <li>full</li>
+                <li>those</li>
+                <li>done</li>
+                <li>use</li>
+                <li>fast</li>
+                <li>say</li>
+                <li>light</li>
+                <li>pick</li>
+                <li>hurt</li>
+                <li>pull</li>
+                <li>cut</li>
+                <li>kind</li>
+                <li>both</li>
+                <li>sit</li>
+                <li>which</li>
+                <li>fall</li>
+                <li>carry</li>
+                <li>small</li>
+                <li>under</li>
+                <li>read</li>
+                <li>why</li>
+                <li>own</li>
+                <li>found</li>
+                <li>wash</li>
+                <li>show</li>
+                <li>hot</li>
+                <li>because</li>
+                <li>far</li>
+                <li>live</li>
+                <li>draw</li>
+                <li>clean</li>
+                <li>grow</li>
+                <li>best</li>
+                <li>upon</li>
+                <li>these</li>
+                <li>sing</li>
+                <li>together</li>
+                <li>please</li>
+                <li>thank</li>
+                <li>wish</li>
+                <li>many</li>
+                <li>shall</li>
+                <li>laugh</li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary class="text-lg">View 95 Dolch Nouns</summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list"
+            >
+              <ul class="columns-2 md:columns-3 lg:columns-4 text-sm">
+                <li>apple</li>
+                <li>baby</li>
+                <li>back</li>
+                <li>ball</li>
+                <li>bear</li>
+                <li>bed</li>
+                <li>bell</li>
+                <li>bird</li>
+                <li>birthday</li>
+                <li>boat</li>
+                <li>box</li>
+                <li>boy</li>
+                <li>bread</li>
+                <li>brother</li>
+                <li>cake</li>
+                <li>car</li>
+                <li>cat</li>
+                <li>chair</li>
+                <li>chicken</li>
+                <li>children</li>
+                <li>Christmas</li>
+                <li>coat</li>
+                <li>corn</li>
+                <li>cow</li>
+                <li>day</li>
+                <li>dog</li>
+                <li>doll</li>
+                <li>door</li>
+                <li>duck</li>
+                <li>egg</li>
+                <li>eye</li>
+                <li>farm</li>
+                <li>farmer</li>
+                <li>father</li>
+                <li>feet</li>
+                <li>fire</li>
+                <li>fish</li>
+                <li>floor</li>
+                <li>flower</li>
+                <li>game</li>
+                <li>garden</li>
+                <li>girl</li>
+                <li>goodbye</li>
+                <li>grass</li>
+                <li>ground</li>
+                <li>hand</li>
+                <li>head</li>
+                <li>hill</li>
+                <li>home</li>
+                <li>horse</li>
+                <li>house</li>
+                <li>kitty</li>
+                <li>leg</li>
+                <li>letter</li>
+                <li>man</li>
+                <li>men</li>
+                <li>milk</li>
+                <li>money</li>
+                <li>morning</li>
+                <li>mother</li>
+                <li>name</li>
+                <li>nest</li>
+                <li>night</li>
+                <li>paper</li>
+                <li>party</li>
+                <li>picture</li>
+                <li>pig</li>
+                <li>rabbit</li>
+                <li>rain</li>
+                <li>ring</li>
+                <li>robin</li>
+                <li>Santa Claus</li>
+                <li>school</li>
+                <li>seed</li>
+                <li>sheep</li>
+                <li>shoe</li>
+                <li>sister</li>
+                <li>snow</li>
+                <li>song</li>
+                <li>squirrel</li>
+                <li>stick</li>
+                <li>street</li>
+                <li>sun</li>
+                <li>table</li>
+                <li>thing</li>
+                <li>time</li>
+                <li>top</li>
+                <li>toy</li>
+                <li>tree</li>
+                <li>watch</li>
+                <li>water</li>
+                <li>way</li>
+                <li>wind</li>
+                <li>window</li>
+                <li>wood</li>
+              </ul>
+            </div>
+          </details>
+          <p class="mt-4 text-sm text-gray-500 body.dark-mode:text-gray-400">
+            Practice recognizing these words quickly in any reading material.
+          </p>
+        </div>
+      </div>
+
+      <div id="day4" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 4: Expanding Instant Vocabulary (Fry Words)
+          </h2>
+          <h3 class="sub-section-title">Concept: Fry Sight Words</h3>
+          <p>
+            Expanding on Dolch words, Fry's Sight Word list is more modern and
+            extensive.
+          </p>
+          <ul>
+            <li>Developed by Dr. Edward Fry (1950s, updated 1980).</li>
+            <li>Captures the 1,000 most common words.</li>
+            <li>Comprise about 90% of words in typical reading materials.</li>
+          </ul>
+          <p>
+            <strong>Goal:</strong> Review all 1,000, focusing on the first 200
+            for instant recognition.
+          </p>
+
+          <h3 class="sub-section-title">Activity: Conquer Fry Words</h3>
+          <details class="mb-4">
+            <summary class="text-lg">View First 100 Fry Words</summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list"
+            >
+              <ul class="columns-2 md:columns-3 lg:columns-4 text-sm">
+                <li>the</li>
+                <li>of</li>
+                <li>and</li>
+                <li>a</li>
+                <li>to</li>
+                <li>in</li>
+                <li>is</li>
+                <li>you</li>
+                <li>that</li>
+                <li>it</li>
+                <li>he</li>
+                <li>was</li>
+                <li>for</li>
+                <li>on</li>
+                <li>are</li>
+                <li>as</li>
+                <li>with</li>
+                <li>his</li>
+                <li>they</li>
+                <li>I</li>
+                <li>at</li>
+                <li>be</li>
+                <li>this</li>
+                <li>have</li>
+                <li>from</li>
+                <li>or</li>
+                <li>one</li>
+                <li>had</li>
+                <li>by</li>
+                <li>words</li>
+                <li>but</li>
+                <li>not</li>
+                <li>what</li>
+                <li>all</li>
+                <li>were</li>
+                <li>we</li>
+                <li>when</li>
+                <li>your</li>
+                <li>can</li>
+                <li>said</li>
+                <li>there</li>
+                <li>use</li>
+                <li>an</li>
+                <li>each</li>
+                <li>which</li>
+                <li>she</li>
+                <li>do</li>
+                <li>how</li>
+                <li>their</li>
+                <li>if</li>
+                <li>will</li>
+                <li>up</li>
+                <li>other</li>
+                <li>about</li>
+                <li>out</li>
+                <li>many</li>
+                <li>then</li>
+                <li>them</li>
+                <li>these</li>
+                <li>so</li>
+                <li>some</li>
+                <li>her</li>
+                <li>would</li>
+                <li>make</li>
+                <li>like</li>
+                <li>him</li>
+                <li>into</li>
+                <li>time</li>
+                <li>has</li>
+                <li>look</li>
+                <li>two</li>
+                <li>more</li>
+                <li>write</li>
+                <li>go</li>
+                <li>see</li>
+                <li>number</li>
+                <li>no</li>
+                <li>way</li>
+                <li>could</li>
+                <li>people</li>
+                <li>my</li>
+                <li>than</li>
+                <li>first</li>
+                <li>water</li>
+                <li>been</li>
+                <li>called</li>
+                <li>who</li>
+                <li>oil</li>
+                <li>sit</li>
+                <li>now</li>
+                <li>find</li>
+                <li>long</li>
+                <li>down</li>
+                <li>day</li>
+                <li>did</li>
+                <li>get</li>
+                <li>come</li>
+                <li>made</li>
+                <li>may</li>
+                <li>part</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="mb-4">
+            <summary class="text-lg">View Second 100 Fry Words</summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list"
+            >
+              <ul class="columns-2 md:columns-3 lg:columns-4 text-sm">
+                <li>over</li>
+                <li>new</li>
+                <li>sound</li>
+                <li>take</li>
+                <li>only</li>
+                <li>little</li>
+                <li>work</li>
+                <li>know</li>
+                <li>place</li>
+                <li>years</li>
+                <li>live</li>
+                <li>me</li>
+                <li>back</li>
+                <li>give</li>
+                <li>most</li>
+                <li>very</li>
+                <li>after</li>
+                <li>things</li>
+                <li>our</li>
+                <li>just</li>
+                <li>name</li>
+                <li>good</li>
+                <li>sentence</li>
+                <li>man</li>
+                <li>think</li>
+                <li>say</li>
+                <li>great</li>
+                <li>where</li>
+                <li>help</li>
+                <li>through</li>
+                <li>much</li>
+                <li>before</li>
+                <li>line</li>
+                <li>right</li>
+                <li>too</li>
+                <li>means</li>
+                <li>old</li>
+                <li>any</li>
+                <li>same</li>
+                <li>tell</li>
+                <li>boy</li>
+                <li>follow</li>
+                <li>came</li>
+                <li>want</li>
+                <li>show</li>
+                <li>also</li>
+                <li>around</li>
+                <li>form</li>
+                <li>three</li>
+                <li>small</li>
+                <li>set</li>
+                <li>put</li>
+                <li>end</li>
+                <li>does</li>
+                <li>another</li>
+                <li>well</li>
+                <li>large</li>
+                <li>must</li>
+                <li>big</li>
+                <li>even</li>
+                <li>such</li>
+                <li>because</li>
+                <li>turn</li>
+                <li>here</li>
+                <li>why</li>
+                <li>ask</li>
+                <li>went</li>
+                <li>men</li>
+                <li>read</li>
+                <li>need</li>
+                <li>land</li>
+                <li>different</li>
+                <li>home</li>
+                <li>us</li>
+                <li>move</li>
+                <li>try</li>
+                <li>kind</li>
+                <li>hand</li>
+                <li>picture</li>
+                <li>again</li>
+                <li>change</li>
+                <li>off</li>
+                <li>play</li>
+                <li>spell</li>
+                <li>air</li>
+                <li>away</li>
+                <li>animal</li>
+                <li>house</li>
+                <li>point</li>
+                <li>page</li>
+                <li>letter</li>
+                <li>mother</li>
+                <li>answer</li>
+                <li>found</li>
+                <li>study</li>
+                <li>still</li>
+                <li>learn</li>
+                <li>should</li>
+                <li>America</li>
+                <li>world</li>
+              </ul>
+            </div>
+          </details>
+          <details>
+            <summary class="text-lg">
+              View All 1000 Fry Words (PDF Reference)
+            </summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md"
+            >
+              <p>
+                For the complete list of 1000 Fry words, please refer to your
+                PDF: "Speed Reading V1 Week 1.pdf", pages 14-23 (document pages)
+                or PDF reader pages 16-25.
+              </p>
+            </div>
+          </details>
+          <div class="tutor-quote mt-6">
+            <p>
+              "I want your brain confused because the confusion is what switches
+              on the part of the brain that can read at a super fast speed...
+              the more confused you are, the better you're doing. So, savor it."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="day5" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 5: Boosting Your Word Power - Advanced Vocabulary
+          </h2>
+          <h3 class="sub-section-title">Why Vocabulary Matters</h3>
+          <p>
+            "A lot of times when we read, we come across new words or
+            complicated words, and that is what unknowingly slows us down a
+            lot."
+          </p>
+          <p>
+            <strong>Goal:</strong> Understand the meanings of these 300
+            difficult and frequent words. Note any challenging ones for later
+            review.
+          </p>
+
+          <h3 class="sub-section-title">
+            Interactive Flashcards: Vocabulary Builder Part 1
+          </h3>
+          <div id="flashcardContainer1" class="flashcard-container">
+            <div class="flashcard" id="flashcard1">
+              <div class="flashcard-face flashcard-front">Click to Start</div>
+              <div class="flashcard-face flashcard-back">Definition</div>
+            </div>
+            <div class="flashcard-controls">
+              <button onclick="prevCard('vocab1')">Previous</button>
+              <button onclick="flipCard('flashcard1')">Flip Card</button>
+              <button onclick="nextCard('vocab1')">Next</button>
+              <button onclick="shuffleCards('vocab1')">Shuffle</button>
+            </div>
+          </div>
+          <details class="mt-6">
+            <summary class="text-lg">
+              Full List: Vocabulary Builder - Part 1 (150 Words)
+            </summary>
+            <div
+              id="vocabList1"
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list text-sm"
+            ></div>
+          </details>
+
+          <h3 class="sub-section-title">
+            Interactive Flashcards: Vocabulary Builder Part 2
+          </h3>
+          <div id="flashcardContainer2" class="flashcard-container">
+            <div class="flashcard" id="flashcard2">
+              <div class="flashcard-face flashcard-front">Click to Start</div>
+              <div class="flashcard-face flashcard-back">Definition</div>
+            </div>
+            <div class="flashcard-controls">
+              <button onclick="prevCard('vocab2')">Previous</button>
+              <button onclick="flipCard('flashcard2')">Flip Card</button>
+              <button onclick="nextCard('vocab2')">Next</button>
+              <button onclick="shuffleCards('vocab2')">Shuffle</button>
+            </div>
+          </div>
+          <details class="mt-6">
+            <summary class="text-lg">
+              Full List: Vocabulary Builder - Part 2 (120 Words)
+            </summary>
+            <div
+              id="vocabList2"
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md vocab-list text-sm"
+            ></div>
+          </details>
+
+          <div class="tutor-quote mt-6">
+            <p>
+              "I'm much more interested in improving the rate at which you learn
+              than simply the rate at which you read."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="day6" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 6: Understanding - Levels of Learning & Schema (Part 1)
+          </h2>
+          <h3 class="sub-section-title">Concept: Levels of Learning</h3>
+          <p>Practice recognizing three levels of learning in questions:</p>
+          <ul>
+            <li><strong>Literal:</strong> Answer directly stated.</li>
+            <li>
+              <strong>Implied:</strong> Answer suggested, "read between the
+              lines."
+            </li>
+            <li>
+              <strong>Inferential:</strong> Combine text info with background
+              knowledge/judgment.
+            </li>
+          </ul>
+          <h3 class="sub-section-title">Concept: Schema (Mental Frameworks)</h3>
+          <p>
+            Schema is your background knowledge. Relevant schema aids
+            comprehension.
+          </p>
+          <details class="mb-4">
+            <summary class="text-lg">
+              Examples of Schema (from PDF Part 1)
+            </summary>
+            <div
+              class="mt-2 p-4 bg-gray-50 body.dark-mode:bg-gray-700 rounded-md"
+            >
+              <p>
+                <strong>Mona Lisa (Part to Whole):</strong> Recognizing the
+                whole from a part uses your schema of the Mona Lisa.
+              </p>
+              <p>
+                <strong>"Washing Clothes" Paragraph:</strong> Confusing without
+                the title (schema). Clear with it.
+              </p>
+              <p>
+                <strong>Jumbled Letters:</strong> "Olny srmat poelpe can raed
+                tihs." Schema for words helps read jumbled text.
+              </p>
+              <p>
+                <strong>Robert Cole Expenses:</strong> List becomes a life story
+                with schema about life events.
+              </p>
+            </div>
+          </details>
+
+          <h3 class="sub-section-title">
+            Activity: Exercise 1 - "Thoughts About Consciousness"
+          </h3>
+          <p>
+            <strong>Instructions:</strong> Read. Determine if questions are
+            Literal, Implied, or Inferential.
+          </p>
+
+          <div class="reading-text mb-4">
+            <strong>THOUGHTS ABOUT CONSCIOUSNESS</strong><br /><br />
+            This is an article about consciousness. We all experience
+            consciousness, but what precisely is it? Let's look at an answer I
+            know you'll really enjoy.<br /><br />
+            For me, I like to visualize consciousness much like a cloud. A cloud
+            that extends into the invisible universe that fills the entire
+            cosmos and existence. This amazing thing is something each of us to
+            experience during our lives.<br /><br />
+            Think about this. When you are awake and perceiving what is going on
+            around you then you are also conscious. You experience the
+            perception internally of the amazing world that exists outside of
+            you. It is as if both of these realms are merged through your
+            awareness of their existence.<br /><br />
+            When we arise from our sleep state each morning, we often experience
+            a series of different levels of consciousness. First, we are
+            oblivious to everything going on around us. Then suddenly we can
+            aware and open our eyes. Soon you become aware of your body laying
+            on the bed, and perhaps spend a few moments reflecting on a dream we
+            just experienced during sleep.<br /><br />
+            Now you feel your feet pressing upon the floor and become aware of
+            the physical environment surrounding you. Things like the
+            temperature and lighting in the room begin to seep in your
+            awareness.<br /><br />
+            Sleep isn't the only way you can experience a shift in
+            consciousness. Sometimes you can experience an accident which can
+            render your unconscious. Perhaps you are being put to sleep by an
+            anesthesiologist during surgery. At other times you might faint or
+            be ingesting something like too much alcohol or medication.
+            Interestingly, you awaken very similarly to these situations as
+            awakening from sleep.<br /><br />
+            Habitual actions that we undertake throughout the day can also alter
+            our consciousness. For example, did you ever drive for a long
+            distance, and suddenly become aware that you've arrived at your
+            destination? This is actually a form of hypnosis which is another
+            conscious state. The repetitive actions during driving often put you
+            into this special state.<br /><br />
+            Sometimes our habits direct our minds towards something we desire or
+            crave. Ever desire to have something sweet like ice-cream or cake?
+            Your consciousness is reflecting on past experiences with these
+            items and craves the pleasurable feelings that come from having
+            them. This too is a form of consciousness.<br /><br />
+            Sometimes a smell can trigger awareness of an event that took place
+            years ago. Why? The smell center in the brain is very ancient and
+            associated with our unconscious memories of events. For example, if
+            you fell on a floor wet with Pine-sol as a child, the smell of pine
+            might later trigger a fear of failing without you being aware that
+            the roots of this fear lie in your unconscious past experience.<br /><br />
+            As we mature, we become more conscious of our hopes, wishes, and
+            feelings. Our awareness offers us the opportunity to change our
+            attitudes, and create a more blissful consciousness as we move
+            forward in life.
+          </div>
+
+          <div id="consciousnessQuestions"></div>
+          <button
+            class="nav-button mt-4"
+            onclick="showAnswers('consciousnessAnswers', consciousnessCorrectAnswers)"
+          >
+            Show Answers
+          </button>
+          <div
+            id="consciousnessAnswers"
+            class="mt-4"
+            style="display: none"
+          ></div>
+
+          <div class="tutor-quote mt-6">
+            <p>
+              "You're going to learn how your mind decodes text. This is really
+              important... My program is more based on psychology, not just
+              mechanics... by learning how your mind understands what you read,
+              you'll be able to have full control."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="day7" class="page-content" style="display: none">
+        <div class="content-card">
+          <h2 class="section-title">
+            Day 7: Sharpening Comprehension (Part 2)
+          </h2>
+          <h3 class="sub-section-title">Recap: Levels of Learning & Schema</h3>
+          <p>
+            Continue practicing identifying Literal, Implied, and Inferential
+            questions.
+          </p>
+
+          <h3 class="sub-section-title">
+            Activity: Exercise 2 - "The Wolf and the Seven Little Kids"
+          </h3>
+          <p><strong>Instructions:</strong> Read. Determine question types.</p>
+
+          <div class="reading-text mb-4">
+            <strong>THE WOLF AND THE SEVEN LITTLE KIDS</strong><br /><br />
+            There was once on a time, an old Goat who had seven little Kids, and
+            loved them with all the love of a mother for her children.<br />
+            One day, she wanted to go into the forest and fetch some food. So
+            she called all seven to her and said, "Dear Children, I have to go
+            into the forest. Be on your guard against the Wolf. If he comes in,
+            he will devour you all skin, hair, and all. The wretch often
+            disguises himself, but you will know him at once by his rough voice
+            and his black feet."<br />
+            The Kids said, "Dear Mother, we will take good care of ourselves.
+            You may go away without any anxiety."<br />
+            Then the old one bleated and went on her way with an easy mind.<br />
+            It was not long before someone knocked at the house-door, and cried,
+            "Open the door, dear Children! Your mother is here, and has brought
+            something back with her for each of you."<br />
+            But the little Kids knew that it was the Wolf, by his rough voice.
+            "We will not open the door," cried they; "you are not our mother.
+            She has a soft, pleasant voice, but your voice is rough. You are the
+            Wolf!"<br />
+            Then the Wolf went away to a shopkeeper, and bought a great lump of
+            chalk, ate this and made his voice soft with it. Then he came back,
+            knocked at the door of the house, and cried, "Open the door, dear
+            Children! Your mother is here and has brought something back with
+            her for each of you."<br />
+            But the Wolf had laid his black paws against the window, and the
+            children saw them, and cried, "We will not open the door, our mother
+            has not black feet like you. You are the Wolf!"<br />
+            Then the Wolf ran to a baker, and said, "I have hurt my feet, rub
+            some dough over them for me."<br />
+            And when the baker had rubbed his feet over, he ran to the miller
+            and said, "Strew some white meal over my feet for me." The miller
+            thought to himself, "The Wolf wants to deceive someone," and
+            refused. But the Wolf said, "If you will not do it, I will devour
+            you." Then the miller was afraid and made his paws white for him.
+            Yes! so are men!<br />
+            Now, the wretch went for the third time to the house-door, knocked
+            at it, and said, "Open the door for me, Children! Your dear little
+            mother has come home, and has brought every one of you something
+            from the forest with her."<br />
+            The little Kids cried, "First show us your paws that we may know if
+            you are our dear little mother."<br />
+            Then he put his paws in through the window. And when the Kids saw
+            that they were white, they believed all that he said and opened the
+            door. But who should come in but the Wolf!<br />
+            They were terrified and wanted to hide. One sprang under the table,
+            the second into the bed, the third into the stove, the fourth into
+            the kitchen, the fifth into the cupboard, the sixth under the
+            washing-bowl, and the seventh into the clock-case. But the Wolf
+            found them all and made no delay, but swallowed one after the other
+            down his throat. The youngest in the clock-case was the only one he
+            did not find.<br />
+            When the Wolf had satisfied his appetite, he took himself off, laid
+            himself down under a tree in the green meadow outside, and began to
+            sleep.<br />
+            Soon afterward, the old Goat came home again from the forest. Ah!
+            what a sight she saw there! The house-door stood wide open. The
+            table, chairs, and benches were thrown down, the washing-bowl lay
+            broken to pieces, and the quilts and pillows were pulled off the
+            bed.<br />
+            She sought her children, but they were nowhere to be found. She
+            called them one after another by name, but no one answered. At last,
+            when she called the youngest, a soft voice cried, "Dear Mother, I am
+            in the clock-case."<br />
+            She took the Kid out, and it told her that the Wolf had come and had
+            eaten all the others. Then you may imagine how she wept over her
+            poor children!<br />
+            At length, in her grief, she went out, and the youngest Kid ran with
+            her. When they came to the meadow, there lay the Wolf by the tree
+            and he was snoring so loud that the branches shook. She looked at
+            him on every side and saw that something was moving and struggling
+            in his stomach. "Ah!" said she, "is it possible that my poor
+            children, whom he has swallowed down for his supper, can be still
+            alive?"<br />
+            Then the Kid had to run home and fetch scissors, and a needle and
+            thread, and the Goat cut open the monster's stomach. Hardly had she
+            made one cut, then a little Kid thrust its head out, and when she
+            had cut farther, all six sprang out one after another, and were all
+            still alive, and had suffered no hurt whatever, for in his
+            greediness the monster had swallowed them whole.<br />
+            What rejoicing there was! They embraced their dear mother and jumped
+            like a tailor at his wedding. The mother, however, said, "Now go and
+            look for some big stones. We will fill the wicked beast's stomach
+            with them, while he is asleep."<br />
+            Then the seven Kids dragged the stones thither with all speed and
+            put as many of them into his stomach as they could get in. And the
+            mother sewed him up again in the greatest haste; so that he was not
+            aware of anything and never once stirred.<br />
+            When the Wolf had had his sleep out, he got on his legs, and as the
+            stones in his stomach made him very thirsty, he wanted to go to a
+            well to drink. But when he began to walk and to move about, the
+            stones in his stomach knocked against each other and rattled. Then
+            cried he:<br />
+            "What rumbles and tumbles<br />
+            Against my poor bones? I thought 'twas six Kids,<br />
+            But it's only big stones!"<br />
+            And when he got to the well and stooped over the water and was just
+            about to drink, the heavy stones made him fall in. There was no help
+            for it, but he had to drown miserably!<br />
+            When the seven Kids saw that, they came running to the spot and
+            cried aloud, "The Wolf is dead! The Wolf is dead!" and danced for
+            joy round about the well with their mother.
+          </div>
+
+          <div id="wolfQuestions"></div>
+          <button
+            class="nav-button mt-4"
+            onclick="showAnswers('wolfAnswers', wolfCorrectAnswers)"
+          >
+            Show Answers
+          </button>
+          <div id="wolfAnswers" class="mt-4" style="display: none"></div>
+
+          <h3 class="sub-section-title">Looking Ahead</h3>
+          <div class="tutor-quote">
+            <p>
+              "So get ready to have an exciting experience as you learn to
+              unleash your full potential... Next week... I'll show you the
+              mechanics for reading faster. And you should be about 100% faster
+              when that's done."
+            </p>
+          </div>
+          <p class="mt-4">
+            Congratulations on completing Week 1! You've laid a strong
+            foundation.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      class="mt-12 text-center text-sm text-gray-500 body.dark-mode:text-gray-400"
+    >
+      <p>
+        &copy; 2024 Speed Reading Learning Companion. Content adapted from
+        provided materials.
+      </p>
+    </footer>
+
+    <script>
+      const pages = ["day1", "day2", "day3", "day4", "day5", "day6", "day7"];
+      const navButtons = document.querySelectorAll(".nav-button");
+      const themeToggleButton = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      function showPage(pageId) {
+        pages.forEach((pid) => {
+          const el = document.getElementById(pid);
+          if (el) el.style.display = pid === pageId ? "block" : "none";
+        });
+        navButtons.forEach((btn) => {
+          btn.classList.remove("active");
+          if (btn.textContent.toLowerCase().replace(/\s+/g, "") === pageId) {
+            btn.classList.add("active");
+          }
+        });
+        window.scrollTo(0, 0);
+      }
+
+      themeToggleButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        const icon = themeToggleButton.querySelector("i");
+        if (body.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      });
+
+      // Vocabulary Data
+      const vocabData1 = [
+        {
+          word: "abject",
+          definition: "(adj) sunk to or existing in a low state or condition",
+        },
+        {
+          word: "aberration",
+          definition:
+            "(n) A state or condition markedly different from the norm",
+        },
+        {
+          word: "abjure",
+          definition: "(v) Formally reject or disavow a formerly held belief",
+        },
+        {
+          word: "abnegation",
+          definition: "(n) The denial and rejection of a doctrine or belief",
+        },
+        { word: "abrogate", definition: "(v) Revoke formally" },
+        {
+          word: "abscond",
+          definition: "(v) Run away, often taking something or somebody along",
+        },
+        { word: "abstruse", definition: "(adj) difficult to penetrate" },
+        { word: "accede", definition: "(v) Yield to another's wish" },
+        {
+          word: "accost",
+          definition:
+            "(v) Approach and speak to someone aggressively or insistently",
+        },
+        {
+          word: "accretion",
+          definition: "(n) An increase by natural growth or addiction",
+        },
+        { word: "acumen", definition: "(n) Shrewdness shown by keen insight" },
+        {
+          word: "adamant",
+          definition:
+            "(adj) Impervious to pleas, persuasion, requests, or reason",
+        },
+        {
+          word: "admonish",
+          definition: "(v) Scold or reprimand: take to task",
+        },
+        {
+          word: "adumbrate",
+          definition:
+            "(v) Describe roughly or give the main points or summary of",
+        },
+        { word: "adverse", definition: "(adj) In an opposing direction" },
+        {
+          word: "advocate",
+          definition: "(n) a person who pleads for a person, cause, or idea",
+        },
+        {
+          word: "affluent",
+          definition:
+            "(adj) Having an abundant supply of money or possessions of value",
+        },
+        {
+          word: "aggrandize",
+          definition:
+            "(verb) Embellish; increase the scope, power, or importance of",
+        },
+        { word: "alacrity", definition: "(n) Liveliness and eagerness" },
+        {
+          word: "alias",
+          definition: "(adv.) A name that has been assumed temporarily",
+        },
+        {
+          word: "ambivalent",
+          definition:
+            "(adj) Uncertain or unable to decide about what course to follow",
+        },
+        { word: "amenable", definition: "(adj) Disposed or willing to comply" },
+        {
+          word: "amorphous",
+          definition: "(adj) Having no definite form or distinct shape",
+        },
+        {
+          word: "anachronistic",
+          definition: "(adj) Chronologically misplaced",
+        },
+        {
+          word: "anathema",
+          definition:
+            "(n) a formal ecclesiastical curse accompanied by excommunication",
+        },
+        { word: "annex", definition: "(v) Attach to" },
+        {
+          word: "antediluvian",
+          definition:
+            "(adj) of or relating to the period before the biblical flood",
+        },
+        {
+          word: "antiseptic",
+          definition:
+            "(adj) Thoroughly clean and free of disease-causing organisms",
+        },
+        {
+          word: "apathetic",
+          definition: "(adj) Showing little or no emotion or animation",
+        },
+        { word: "antithesis", definition: "(n) Exact opposite" },
+        {
+          word: "apocryphal",
+          definition: "(adj) Being of questionable authenticity",
+        },
+        {
+          word: "approbation",
+          definition: "(n) Official acceptance or agreement",
+        },
+        {
+          word: "arbitrary",
+          definition:
+            "(adj) Based on or subject to individual discretion or preference",
+        },
+        {
+          word: "arboreal",
+          definition: "(adj) Relating to or formed by trees",
+        },
+        {
+          word: "arcane",
+          definition: "(adj) Requiring secret or mysterious knowledge",
+        },
+        {
+          word: "archetypal",
+          definition:
+            "(adj) Of an original type after which other things are patterned",
+        },
+        {
+          word: "arrogate",
+          definition: "(v) Seize and take control without authority",
+        },
+        {
+          word: "ascetic",
+          definition:
+            "(adj) Someone who practices self-denial as a spiritual exercise",
+        },
+        { word: "aspersion", definition: "(n) A disparaging remark" },
+        {
+          word: "assiduous",
+          definition: "(adj) Marked by care and persistent effort",
+        },
+        {
+          word: "atrophy",
+          definition:
+            "(v)A decrease in size of an organ caused by disease or disuse",
+        },
+        { word: "bane", definition: "(n)Something causing misery or death" },
+        { word: "bashful", definition: "(adj) Self-consciously timid" },
+        { word: "beguile", definition: "(v)Influence by slyness" },
+        {
+          word: "bereft",
+          definition: "(adj) Sorrowful through loss or deprivation",
+        },
+        {
+          word: "blandishment",
+          definition: "(n)Flattery intended to persuade",
+        },
+        {
+          word: "bilk",
+          definition: "(v)Cheat somebody out of what is due, especially money",
+        },
+        {
+          word: "bombastic",
+          definition: "(adj) Ostentatiously lofty in style",
+        },
+        {
+          word: "cajole",
+          definition:
+            "(v)influence or urge by gentle urging, caressing, or flattering",
+        },
+        { word: "callous", definition: "(adj) Emotionally hardened" },
+        {
+          word: "calumny",
+          definition: "(adj) A false accusation of an offense",
+        },
+        {
+          word: "camaraderie",
+          definition:
+            "(n)The quality of affording easy familiarity and sociability",
+        },
+        {
+          word: "candor",
+          definition: "(n) The quality of being honest and straightforward",
+        },
+        {
+          word: "capitulate",
+          definition: "(n)Surrender under agreed conditions",
+        },
+        {
+          word: "carouse",
+          definition: "(n) Engage in boisterous, drunken merrymaking",
+        },
+        {
+          word: "carp",
+          definition:
+            "(n)Any of various freshwater fish of the family cyprinidae (also v. to complain)",
+        },
+        {
+          word: "caucus",
+          definition: "(n)Meet to select a candidate or promote a policy",
+        },
+        { word: "cavort", definition: "(v) Play boisterously" },
+        {
+          word: "circumlocution",
+          definition: "(n)An indirect way of expressing something",
+        },
+        {
+          word: "circumscribe",
+          definition: "(v) Restrict (something) within limits",
+        },
+        {
+          word: "circumvent",
+          definition:
+            "(v)Surround so as to force to give up; or find a way around an obstacle",
+        },
+        {
+          word: "clamour",
+          definition: "(n) Utter or proclaim insistently and noisily",
+        },
+        {
+          word: "cleave",
+          definition:
+            "(v) Separate or cut with a tool, such as a sharp instrument; or stick fast to",
+        },
+        {
+          word: "cobbler",
+          definition: "(n)A person who makes or repairs shoes",
+        },
+        { word: "cogent", definition: "(adj) Powerfully persuasive" },
+        {
+          word: "cognizant",
+          definition:
+            "(adj)Having or showing knowledge or understanding or realization",
+        },
+        {
+          word: "commensurate",
+          definition: "(adj)Corresponding in size or degree or extent",
+        },
+        {
+          word: "complement",
+          definition: "(n)Something added to embellish or make perfect",
+        },
+        {
+          word: "compunction",
+          definition: "(n)A feeling of deep regret, usually for some misdeed",
+        },
+        {
+          word: "concomitant",
+          definition: "(adj) Following or accompanying as a consequence",
+        },
+        {
+          word: "conduit",
+          definition:
+            "(n)A passage through which water or electric wires can pass",
+        },
+        {
+          word: "conflagration",
+          definition: "(n)A very intense and uncontrolled fire",
+        },
+        {
+          word: "congruity",
+          definition:
+            "(n)The quality of agreeing; being suitable and appropriate",
+        },
+        {
+          word: "connive",
+          definition: "(v) Conspire to do something considered immoral",
+        },
+        {
+          word: "consign",
+          definition: "(v)Give over to another for care or safekeeping",
+        },
+        {
+          word: "constituent",
+          definition:
+            "(adj) One of the individual parts making up a composite entity",
+        },
+        {
+          word: "construe",
+          definition: "(v) Make sense of; assign a meaning to",
+        },
+        {
+          word: "contusion",
+          definition: "(n)An injury in which the skin is not broken",
+        },
+        {
+          word: "contrite",
+          definition:
+            "(adj) Feeling or expressing pain or sorrow for sins or offenses",
+        },
+        {
+          word: "contentious",
+          definition: "(adj)Showing an inclination to disagree",
+        },
+        {
+          word: "contravene",
+          definition: "(v)Go against as of rules and laws",
+        },
+        {
+          word: "convivial",
+          definition:
+            "(adj) Occupied with or fond of the pleasure of good company",
+        },
+        {
+          word: "corpulence",
+          definition: "(n) The property of excessive fatness",
+        },
+        { word: "covet", definition: "(v)Wish, long, or crave for" },
+        {
+          word: "cupidity",
+          definition: "(n) Extreme greed for material wealth",
+        },
+        { word: "dearth", definition: "(n)An insufficient quantity or number" },
+        { word: "debacle", definition: "(n)A sudden and complete disaster" },
+        {
+          word: "debauch",
+          definition:
+            "(v)A wild gathering involving excessive drinking (also n.)",
+        },
+        { word: "debunk", definition: "(v) Expose while ridiculing" },
+        {
+          word: "defunct",
+          definition: "(adj) No longer in force or use; inactive",
+        },
+        {
+          word: "demagogue",
+          definition:
+            "(n)A leader who seeks support by appealing to popular passions",
+        },
+        {
+          word: "denigrate",
+          definition: "(v)Attack the good name and reputation of someone",
+        },
+        {
+          word: "derivative",
+          definition: "(n)A compound obtained from another compound",
+        },
+        { word: "despot", definition: "(n)A cruel and oppressive dictator" },
+        { word: "diaphanous", definition: "(adj)So thin as to transmit light" },
+        {
+          word: "didactic",
+          definition: "(adj)Instructive, especially excessively",
+        },
+        {
+          word: "dirge",
+          definition:
+            "(n)A song or hymn of mourning as a memorial to a dead person",
+        },
+        {
+          word: "disaffected",
+          definition: "(adj) Discontented as towards authority",
+        },
+        { word: "discomfit", definition: "(v)Cause to lose one's composure" },
+        {
+          word: "disparate",
+          definition:
+            "(adj) Fundamentally different or distinct in quality or kind",
+        },
+        {
+          word: "dispel",
+          definition: "(v) To cause to separate and go in different directions",
+        },
+        {
+          word: "disrepute",
+          definition: "(n) The state of being held in low esteem",
+        },
+        {
+          word: "divisive",
+          definition:
+            "(adj)Causing or characterized by disagreement or disunity",
+        },
+        {
+          word: "dogmatic",
+          definition:
+            "(adj) Pertaining to a code of beliefs accepted as authoritative",
+        },
+        { word: "dour", definition: "(adj) Showing a brooding ill humor" },
+        {
+          word: "duplicity",
+          definition: "(n)The act of deceiving or acting in bad faith",
+        },
+        { word: "duress", definition: "(n)Compulsory force or threat" },
+        {
+          word: "eclectic",
+          definition:
+            "(adj)Selecting what seems best of various styles or ideas",
+        },
+        {
+          word: "edict",
+          definition: "(n)A formal or authoritative proclamation",
+        },
+        { word: "ebullient", definition: "(adj)Joyously unrestrained" },
+        {
+          word: "egregious",
+          definition:
+            "(adj) Conspicuously and outrageously bad or reprehensible",
+        },
+        {
+          word: "elegy",
+          definition: "(n)A mournful poem; a lament for the dead",
+        },
+        {
+          word: "elicit",
+          definition: "(v)Call forth, as an emotion, feeling, or response",
+        },
+        {
+          word: "embezzlement",
+          definition: "(n) The fraudulent appropriation of funds or property",
+        },
+        { word: "emend", definition: "(v)Make corrections to" },
+        {
+          word: "emollient",
+          definition:
+            "(adj) A substance with a soothing effect when applied to the skin (also n.)",
+        },
+        {
+          word: "empirical",
+          definition:
+            "(adj) Derived from experiment and observation rather than theory",
+        },
+        {
+          word: "emulate",
+          definition: "(v)Strive to equal or match, especially by imitating",
+        },
+        { word: "enervate", definition: "(v)Weaken mentally or morally" },
+        {
+          word: "enfranchise",
+          definition: "(v)Grant freedom to, as from slavery or servitude",
+        },
+        { word: "engender", definition: "(v)Call forth" },
+        {
+          word: "ephemeral",
+          definition:
+            "(adj) Anything short lived, as an insect that lives only for a day",
+        },
+        {
+          word: "epistolary",
+          definition: "(adj) Written in the form of letters or correspondence",
+        },
+        {
+          word: "equanimity",
+          definition: "(n)Steadiness of mind when in stress",
+        },
+        {
+          word: "equivocal",
+          definition: "(adj)Open to two or more interpretations",
+        },
+        {
+          word: "espouse",
+          definition: "(v)Choose and follow a theory, idea, policy, etc.",
+        },
+        {
+          word: "evanescent",
+          definition: "(adj) Tending to vanish like vapor",
+        },
+        { word: "evince", definition: "(v) Give expression to" },
+        { word: "exacerbate", definition: "(v) Make worse" },
+        {
+          word: "exhort",
+          definition: "(v)Spur on or encourage especially by cheers and shouts",
+        },
+        { word: "execrable", definition: "(adj) Unequivocally detestable" },
+        { word: "exigent", definition: "(adj) Demanding immediate attention" },
+        {
+          word: "expedient",
+          definition: "(adj) Appropriate to a purpose (also n.)",
+        },
+        { word: "expiate", definition: "(v)Make amends for" },
+        {
+          word: "expunge",
+          definition:
+            "(v) Remove by erasing or crossing out or as if by drawing a line",
+        },
+        {
+          word: "extraneous",
+          definition: "(adj)Not belonging to that in which it is contained",
+        },
+        { word: "extol", definition: "(v)Praise, glorify, or honor" },
+        {
+          word: "extant",
+          definition:
+            "(adj)Still in existence; not extinct or destroyed or lost",
+        },
+        {
+          word: "expurgate",
+          definition:
+            "(v)Edit by omitting or modifying parts considered indelicate",
+        },
+        {
+          word: "fallacious",
+          definition: "(adj) Containing or based on incorrect reasoning",
+        },
+        { word: "fatuous", definition: "(adj) Devoid of intelligence" },
+        {
+          word: "fetter",
+          definition: "(n)A shackle for the ankles or feet (also v.)",
+        },
+        {
+          word: "flagrant",
+          definition:
+            "(adj)Conspicuously and outrageously bad or reprehensible",
+        },
+        {
+          word: "foil",
+          definition:
+            "(v)Hinder or prevent, as in effort, plan, or desire (also n.)",
+        },
+        {
+          word: "forbearance",
+          definition: "(n)Good-natured tolerance of delay or incompetence",
+        },
+        {
+          word: "fortuitous",
+          definition: "(adj) Lucky; occurring by happy chance",
+        },
+        { word: "fractious", definition: "(adj) Easily irritated or annoyed" },
+        { word: "garrulous", definition: "(adj) Full of trivial conversation" },
+        {
+          word: "gourmand",
+          definition:
+            "(n)A person who is devoted to eating and drinking to excess",
+        },
+        { word: "grandiloquent", definition: "(adj) Lofty in style" },
+      ];
+
+      const vocabData2 = [
+        { word: "gratuitous", definition: "(adj) unnecessary and unwarranted" },
+        { word: "hapless", definition: "(adj) unfortunate and deserving pity" },
+        {
+          word: "hegemony",
+          definition:
+            "(n) he dominance or leadership of one social group over others",
+        },
+        {
+          word: "heterogeneous",
+          definition:
+            "(adj) consisting of elements that are not of the same kind",
+        },
+        {
+          word: "iconoclast",
+          definition: "(n) omeone who attacks cherished ideas or institutions",
+        },
+        {
+          word: "idiosyncratic",
+          definition: "(adj) peculiar to the individual",
+        },
+        {
+          word: "impecunious",
+          definition: "(adj) not having enough money to pay for necessities",
+        },
+        {
+          word: "impetuous",
+          definition: "(adj) characterized by undue haste and lack of thought",
+        },
+        { word: "impinge", definition: "(v) infringe upon" },
+        { word: "impute", definition: "(v) attribute or credit to" },
+        { word: "inane", definition: "(adj) devoid of intelligence" },
+        {
+          word: "inchoate",
+          definition: "(adj) only partly in existence; imperfectly formed",
+        },
+        {
+          word: "incontrovertible",
+          definition: "(adj) impossible to deny or disprove",
+        },
+        {
+          word: "incumbent",
+          definition:
+            "(adj) necessary as a duty or responsibility; morally binding",
+        },
+        {
+          word: "inexorable",
+          definition:
+            "(adj) not to be placated or appeased or moved by entreaty",
+        },
+        { word: "inimical", definition: "(adj) not friendly" },
+        {
+          word: "injunction",
+          definition:
+            "(n) judicial remedy to prohibit a party from doing something",
+        },
+        {
+          word: "inoculate",
+          definition:
+            "(v) inject or treat with the germ of a disease to render immune",
+        },
+        {
+          word: "insidious",
+          definition:
+            "(adj) working or spreading in a hidden and usually injurious way",
+        },
+        { word: "instigate", definition: "(v) provoke or stir up" },
+        {
+          word: "insurgent",
+          definition:
+            "(n) in opposition to a civil authority or government (also adj.)",
+        },
+        {
+          word: "interlocutor",
+          definition: "(n) person who takes part in a conversation",
+        },
+        {
+          word: "intimation",
+          definition: "(n) light suggestion or vague understanding",
+        },
+        {
+          word: "inure",
+          definition: "(v) cause to accept or become hardened to",
+        },
+        {
+          word: "invective",
+          definition: "(n) abusive language used to express blame or censure",
+        },
+        {
+          word: "intransigent",
+          definition:
+            "(adj) impervious to please, persuasion, requests, or reason",
+        },
+        { word: "inveterate", definition: "(adj) habitual" },
+        {
+          word: "irreverence",
+          definition: "(n) mental attitude showing lack of due respect",
+        },
+        {
+          word: "knell",
+          definition: "(n) the sound of a bell rung slowly to announce a death",
+        },
+        { word: "laconic", definition: "(adj) brief and to the point" },
+        { word: "largesse", definition: "(n) liberality in bestowing gifts" },
+        { word: "legerdemain", definition: "(n) in illusory feat; trickery" },
+        {
+          word: "libertarian",
+          definition: "(n) an advocate of freedom of thought and speech",
+        },
+        { word: "licentious", definition: "(adj) lacking moral discipline" },
+        {
+          word: "linchpin",
+          definition: "(n) a central cohesive source of support and stability",
+        },
+        { word: "litigant", definition: "(n) party to a lawsuit" },
+        {
+          word: "maelstrom",
+          definition:
+            "(n) powerful circular current of water; a confused turmoil",
+        },
+        {
+          word: "maudlin",
+          definition: "(adj) effusively or insincerely emotional",
+        },
+        {
+          word: "maverick",
+          definition:
+            "(n) someone who exhibits independence in thought and action",
+        },
+        {
+          word: "mawkish",
+          definition:
+            "(adj) effusively or insincerely emotional; sickeningly sentimental",
+        },
+        {
+          word: "maxim",
+          definition: "(n) saying that is widely accepted on its own merits",
+        },
+        { word: "mendacious", definition: "(adj) given to lying" },
+        {
+          word: "modicum",
+          definition: "(n) small or moderate or token amount",
+        },
+        {
+          word: "morass",
+          definition:
+            "(n) soft wet area of low-lying land that sinks underfoot; a confusing situation",
+        },
+        {
+          word: "mores",
+          definition:
+            "(n) the conventions embodying the fundamental values of a group",
+        },
+        { word: "munificent", definition: "(adj) very generous" },
+        { word: "multifarious", definition: "(adj) having many aspects" },
+        { word: "nadir", definition: "(n) the lowest point of anything" },
+        {
+          word: "negligent",
+          definition:
+            "(adj) characterized by undue lack of attention or concern",
+        },
+        {
+          word: "neophyte",
+          definition: "(n) any new participant in some activity",
+        },
+        {
+          word: "noisome",
+          definition: "(adj) offensively malodorous; harmful",
+        },
+        {
+          word: "noxious",
+          definition: "(adj) injurious to physical or mental health",
+        },
+        {
+          word: "obdurate",
+          definition: "(adj) stubbornly persistent in wrongdoing",
+        },
+        { word: "obfuscate", definition: "(v) take obscure or unclear" },
+        {
+          word: "obstreperous",
+          definition: "(adj) noisily and stubbornly defiant",
+        },
+        {
+          word: "officious",
+          definition: "(adj) intrusive in a meddling or offensive manner",
+        },
+        {
+          word: "onerous",
+          definition: "(adj) burdensome or difficult to endure",
+        },
+        {
+          word: "ostensible",
+          definition: "(adj) appearing as such but not necessarily so",
+        },
+        {
+          word: "ostracism",
+          definition:
+            "(n) the act of excluding someone from society by general consent",
+        },
+        {
+          word: "palliate",
+          definition:
+            "(v) lessen or to try to lessen the seriousness or extent of",
+        },
+        {
+          word: "panacea",
+          definition: "(n) hypothetical remedy for all ills or diseases",
+        },
+        {
+          word: "paradigm",
+          definition: "(n) standard or typical example; a model",
+        },
+        {
+          word: "pariah",
+          definition: "(n) person who is rejected from society or home",
+        },
+        {
+          word: "partisan",
+          definition:
+            "(n) servent and even militant proponent of something (also adj.)",
+        },
+        {
+          word: "paucity",
+          definition: "(n) an insufficient quantity or number",
+        },
+        { word: "pejorative", definition: "(adj) expressing disapproval" },
+        {
+          word: "pellucid",
+          definition: "(adj) transparently clear; easily understandable",
+        },
+        { word: "penchant", definition: "(n) strong liking" },
+        {
+          word: "penurious",
+          definition: "(adj) excessively unwilling to spend; poverty-stricken",
+        },
+        {
+          word: "pert",
+          definition:
+            "(adj) characterized by a lightly saucy or impudent quality",
+        },
+        { word: "pernicious", definition: "(adj) exceedingly harmful" },
+        { word: "pertinacious", definition: "(adj) stubbornly unyielding" },
+        { word: "phlegmatic", definition: "(adj) showing little emotion" },
+        {
+          word: "philanthropic",
+          definition: "(adj) of or relating to charitable giving",
+        },
+        { word: "pithy", definition: "(adj) concise and full of meaning" },
+        { word: "platitude", definition: "(n) trite or obvious remark" },
+        {
+          word: "plaudit",
+          definition: "(n) enthusiastic approval (usually plural: plaudits)",
+        },
+        { word: "plenitude", definition: "(n) full supply" },
+        { word: "plethora", definition: "(n) extreme excess" },
+        {
+          word: "portent",
+          definition: "(n) sign of something about to happen",
+        },
+        {
+          word: "potentate",
+          definition: "(n) ruler who is unconstrained by law",
+        },
+        {
+          word: "preclude",
+          definition: "(v) make impossible, especially beforehand",
+        },
+        {
+          word: "predilection",
+          definition: "(n) predisposition in favor of something",
+        },
+        {
+          word: "preponderance",
+          definition:
+            "(n) exceeding in heaviness; having greater weight or influence",
+        },
+        {
+          word: "presage",
+          definition:
+            "(v) a foreboding about what is about to happen (also n.)",
+        },
+        { word: "probity", definition: "(n) complete and confirmed integrity" },
+        { word: "proclivity", definition: "(n) natural inclination" },
+        {
+          word: "profligate",
+          definition:
+            "(adj) unrestrained by convention or morality; recklessly extravagant",
+        },
+        {
+          word: "promulgate",
+          definition: "(v) state or announce; put a law into effect",
+        },
+        { word: "proscribe", definition: "(v) command against; forbid" },
+        {
+          word: "protean",
+          definition: "(adj) taking on different forms; versatile",
+        },
+        { word: "prurient", definition: "(adj) characterized by lust" },
+        {
+          word: "puerile",
+          definition:
+            "(adj) displaying or suggesting a lack of maturity; childish",
+        },
+        {
+          word: "pugnacious",
+          definition:
+            "(adj) ready and able to resort to force or violence; quarrelsome",
+        },
+        {
+          word: "pulchritude",
+          definition: "(n) physical beauty, especially of a woman",
+        },
+        {
+          word: "punctilious",
+          definition: "(adj) marked by precise accordance with details",
+        },
+        { word: "quaint", definition: "(adj) attractively old-fashioned" },
+        {
+          word: "quixotic",
+          definition:
+            "(adj) not sensible about practical matters; idealistic but impractical",
+        },
+        {
+          word: "quandary",
+          definition:
+            "(n) state of uncertainty in a choice between unfavorable options",
+        },
+        {
+          word: "recalcitrant",
+          definition: "(adj) stubbornly resistant to authority or control",
+        },
+        { word: "redoubtable", definition: "(adj) inspiring fear; formidable" },
+        { word: "relegate", definition: "(v) assign to a lower position" },
+        { word: "remiss", definition: "(adj) failing in what duty requires" },
+        {
+          word: "reprieve",
+          definition:
+            "(v) postpone the punishment of a convicted criminal (also n.)",
+        },
+        {
+          word: "reprobate",
+          definition: "(n) person without moral scruples (also adj. & v.)",
+        },
+        { word: "rescind", definition: "(v) cancel officially" },
+        {
+          word: "requisition",
+          definition: "(n) an authoritative demand (also v.)",
+        },
+        {
+          word: "rife",
+          definition:
+            "(adj) excessively abundant; widespread (especially something undesirable)",
+        },
+        {
+          word: "sanctimonious",
+          definition: "(adj) excessively or hypocritically pious",
+        },
+        {
+          word: "sanguine",
+          definition: "(adj) confidently optimistic and cheerful",
+        },
+        {
+          word: "scurrilous",
+          definition: "(adj) expressing offensive reproach; coarse and abusive",
+        },
+        {
+          word: "semaphore",
+          definition: "(n)an apparatus for visual signaling (also v.)",
+        },
+        {
+          word: "serendipity",
+          definition:
+            "(n) good luck in making unexpected and fortunate discoveries",
+        },
+        {
+          word: "sobriety",
+          definition:
+            "(n) the state of being unaffected or not intoxicated by alcohol; seriousness",
+        },
+        {
+          word: "solicitous",
+          definition: "(adj) full of anxiety and concern; attentive",
+        },
+        {
+          word: "solipsism",
+          definition:
+            "(n) the philosophical theory that the self is all that exists",
+        },
+        {
+          word: "spurious",
+          definition: "(adj) plausible but false; not genuine",
+        },
+        {
+          word: "staid",
+          definition: "(adj) characterized by dignity and propriety; sedate",
+        },
+        {
+          word: "stolid",
+          definition:
+            "(adj) having or revealing little emotion or sensibility; impassive",
+        },
+        {
+          word: "subjugate",
+          definition: "(v) take subservient; force to submit or subdue",
+        },
+      ];
+
+      let currentCardIndex = { vocab1: 0, vocab2: 0 };
+      let shuffledVocab = { vocab1: [...vocabData1], vocab2: [...vocabData2] };
+
+      function populateVocabLists() {
+        const list1El = document.getElementById("vocabList1");
+        const list2El = document.getElementById("vocabList2");
+        if (list1El)
+          list1El.innerHTML = vocabData1
+            .map(
+              (item) =>
+                `<li><strong>${item.word}:</strong> ${item.definition}</li>`
+            )
+            .join("");
+        if (list2El)
+          list2El.innerHTML = vocabData2
+            .map(
+              (item) =>
+                `<li><strong>${item.word}:</strong> ${item.definition}</li>`
+            )
+            .join("");
+      }
+
+      function updateFlashcard(vocabKey) {
+        const cardData = shuffledVocab[vocabKey][currentCardIndex[vocabKey]];
+        const flashcardElement = document.getElementById(
+          vocabKey === "vocab1" ? "flashcard1" : "flashcard2"
+        );
+        if (cardData && flashcardElement) {
+          flashcardElement.querySelector(".flashcard-front").textContent =
+            cardData.word;
+          flashcardElement.querySelector(".flashcard-back").textContent =
+            cardData.definition;
+          flashcardElement.classList.remove("is-flipped");
+        }
+      }
+
+      function flipCard(flashcardId) {
+        document.getElementById(flashcardId).classList.toggle("is-flipped");
+      }
+
+      function nextCard(vocabKey) {
+        currentCardIndex[vocabKey] =
+          (currentCardIndex[vocabKey] + 1) % shuffledVocab[vocabKey].length;
+        updateFlashcard(vocabKey);
+      }
+
+      function prevCard(vocabKey) {
+        currentCardIndex[vocabKey] =
+          (currentCardIndex[vocabKey] - 1 + shuffledVocab[vocabKey].length) %
+          shuffledVocab[vocabKey].length;
+        updateFlashcard(vocabKey);
+      }
+
+      function shuffleCards(vocabKey) {
+        for (let i = shuffledVocab[vocabKey].length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffledVocab[vocabKey][i], shuffledVocab[vocabKey][j]] = [
+            shuffledVocab[vocabKey][j],
+            shuffledVocab[vocabKey][i],
+          ];
+        }
+        currentCardIndex[vocabKey] = 0;
+        updateFlashcard(vocabKey);
+      }
+
+      // Questions for Day 6
+      const consciousnessQuestionsList = [
+        "Is this an article about consciousness?",
+        "What is the sleep state?",
+        "What does the word oblivious mean?",
+        "When you arise from sleep are you oblivious to everything going on around you?",
+        "Can an accident render you unconscious?",
+        "Can an anesthesiologist alter your state?",
+        "What is an anesthesiologist?",
+        "Can habitual actions alter our consciousness?",
+        "Does your consciousness reflect on past experiences?",
+        "How can awareness offer us the opportunity to change our attitudes?",
+      ];
+      const consciousnessCorrectAnswers = [
+        "Literal",
+        "Implied",
+        "Inferential",
+        "Literal",
+        "Literal",
+        "Literal",
+        "Inferential",
+        "Literal",
+        "Literal",
+        "Implied",
+      ];
+
+      // Questions for Day 7
+      const wolfQuestionsList = [
+        "Is this a story about an old goat and seven little Kids?",
+        'Did the Kids say, "Dear Mother, we will take good care of ourselves. You may go away without any anxiety?"',
+        "Did the mother warn the kids about the wolf?",
+        "Did the Kids recognize the wolf's voice?",
+        "Did the kids see the wolf's black feet and know it wasn't their mother?",
+        "Why did the Wolf tell the baker he hurt his feet?",
+        "Was the baker afraid of the wolf?",
+        "How did the wolf deceive the children?",
+        "Where did the youngest kid hide?",
+        "Did the kids come out of the wolf's stomach alive?",
+      ];
+      const wolfCorrectAnswers = [
+        "Literal",
+        "Literal",
+        "Literal",
+        "Literal",
+        "Literal",
+        "Implied",
+        "Inferential",
+        "Implied",
+        "Literal",
+        "Literal",
+      ];
+
+      function createQuestionBlocks(containerId, questionsList) {
+        const container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = "";
+        questionsList.forEach((qText, index) => {
+          const qBlock = document.createElement("div");
+          qBlock.className = "question-block";
+          qBlock.innerHTML = `
+                <p class="font-medium">${index + 1}) ${qText}</p>
+                <div class="mt-2 space-y-1 text-sm">
+                    <label class="flex items-center"><input type="radio" name="q${containerId}${index}" value="Literal" class="mr-2 focus:ring-accent-color text-accent-color">${" "}Literal</label>
+                    <label class="flex items-center"><input type="radio" name="q${containerId}${index}" value="Implied" class="mr-2 focus:ring-accent-color text-accent-color">${" "}Implied</label>
+                    <label class="flex items-center"><input type="radio" name="q${containerId}${index}" value="Inferential" class="mr-2 focus:ring-accent-color text-accent-color">${" "}Inferential</label>
+                </div>
+            `;
+          container.appendChild(qBlock);
+        });
+      }
+
+      function showAnswers(answersContainerId, correctAnswersArray) {
+        const answersContainer = document.getElementById(answersContainerId);
+        if (!answersContainer) return;
+
+        let html =
+          '<h4 class="text-lg font-semibold mb-2">Correct Answers:</h4><ul class="list-disc ml-5">';
+        correctAnswersArray.forEach((answer, index) => {
+          html += `<li>Question ${
+            index + 1
+          }: <strong class="font-semibold">${answer}</strong></li>`;
+        });
+        html += "</ul>";
+        answersContainer.innerHTML = html;
+        answersContainer.style.display = "block";
+        answersContainer.classList.add("answer-reveal");
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        showPage("day1");
+        createQuestionBlocks(
+          "consciousnessQuestions",
+          consciousnessQuestionsList
+        );
+        createQuestionBlocks("wolfQuestions", wolfQuestionsList);
+        populateVocabLists();
+        updateFlashcard("vocab1"); // Initialize first flashcard for vocab set 1
+        updateFlashcard("vocab2"); // Initialize first flashcard for vocab set 2
+
+        // Set initial theme based on system preference if desired, or default to light
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches &&
+          !body.classList.contains("dark-mode") &&
+          !body.classList.contains("light-mode-explicit")
+        ) {
+          // body.classList.add('dark-mode'); // Default to dark if system prefers, and no explicit choice made
+          // themeToggleButton.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        } else {
+          body.classList.add("light-mode-explicit"); // Default to light
+        }
+      });
+    </script>
+  </body>
+</html>
